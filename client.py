@@ -63,12 +63,13 @@ def send_message():
 
 root = tk.Tk()
 root.geometry("600x600")
-image=tk.PhotoImage(file="code.gif")
+#logo=tk.PhotoImage(file="code.gif")
 """image= image.subsample(3,3)
 label=tk.Label(image=image)
 label.pack()"""
 root.title("Soporte Centro de informatica")
 root.resizable(False, False)
+logo=tk.PhotoImage(file="code.gif")
 
 root.grid_rowconfigure(0, weight=1)
 root.grid_rowconfigure(1, weight=4)
@@ -98,8 +99,9 @@ message_textbox.pack(side=tk.LEFT, padx=10)
 message_button = tk.Button(bottom_frame, text="Enviar", font=BUTTON_FONT, bg=OCEAN_BLUE, fg=WHITE, command=send_message)
 message_button.pack(side=tk.LEFT, padx=10)
 
-message_box = scrolledtext.ScrolledText(middle_frame, font=SMALL_FONT,bg=AZUL, fg=WHITE, width=67, height=26.5)
-message_box=label(middle_frame,image=image).place(x=0,y=0)
+
+message_box =scrolledtext.ScrolledText(middle_frame,font=SMALL_FONT,bg=None, fg=WHITE, width=67, height=26.5)
+message_box=tk.Label(middle_frame,image=logo)
 message_box.config(state=tk.DISABLED)
 message_box.pack(side=tk.TOP)
 

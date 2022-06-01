@@ -7,7 +7,8 @@ from tkinter import scrolledtext
 from tkinter import messagebox
 from tkinter import *
 import tkinter
-from PIL import ImageTk, Image  
+from PIL import ImageTk, Image
+from datetime import datetime  
 
 HOST = '127.0.0.1'
 PORT = 1234
@@ -67,8 +68,8 @@ def send_message():
 root = Tk()
 root.title("Soporte Centro de informatica")
 root.resizable(False, False)
-#img =Image.open('C:\\Users\\jesush.lopezz\\Desktop\\Proyecto\\Desarrollo-de-chat---UAM\\code.gif')
-#bg = ImageTk.PhotoImage(img)
+img =Image.open('C:\\Users\\jesush.lopezz\\Desktop\\Proyecto\\Desarrollo-de-chat---UAM\\code.gif')
+img = ImageTk.PhotoImage(img)
 
 root.geometry("600x600")
 
@@ -106,12 +107,15 @@ message_button = Button(bottom_frame, text="Enviar", font=BUTTON_FONT, bg=WHITE,
 message_button.pack(side=LEFT, padx=10)
 
 message_box =scrolledtext.ScrolledText(middle_frame,font=SMALL_FONT,bg=WHITE, fg=GRAY10, width=67, height=26.5)
+t_label = tk.Label(middle_frame, fg="white", bg="#595656", text=datetime.now().strftime('%H:%M'),
+                    font="lucida 9 bold")
+t_label.pack()
 message_box.config(state=DISABLED)
 message_box.pack(side=TOP)
 
-
-
-
+t_label = tk.Label(middle_frame, fg="white", bg="#595656", text=datetime.now().strftime('%H:%M'),
+                    font="lucida 9 bold")
+t_label.pack()
 
 def listen_for_messages_from_server(client):
 

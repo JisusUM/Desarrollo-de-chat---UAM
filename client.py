@@ -7,6 +7,7 @@ from tkinter import scrolledtext
 from tkinter import messagebox
 from tkinter import *
 import tkinter
+from PIL import ImageTk, Image  
 
 HOST = '127.0.0.1'
 PORT = 1234
@@ -14,11 +15,13 @@ PORT = 1234
 DARK_GREY = '#121212'
 MEDIUM_GREY = '#1F1B24'
 OCEAN_BLUE = '#464EB8'
-WHITE = "white"
-AZUL = '#6495ED'
+WHITE = '#FFFAFA'
+AZUL = '#4F94CD'
+GRAY10 ='#1A1A1A'
 FONT = ("Helvetica", 17)
 BUTTON_FONT = ("Helvetica", 15)
 SMALL_FONT = ("Helvetica", 13)
+
 
 
 # Creando un objeto de enchufe
@@ -62,45 +65,47 @@ def send_message():
         messagebox.showerror("mensaje vacio", "El mensaje no puede estar vacío")
 
 root = Tk()
-root.geometry("600x600")
 root.title("Soporte Centro de informatica")
 root.resizable(False, False)
-bg =PhotoImage(file="code.gif")
+#img =Image.open('C:\\Users\\jesush.lopezz\\Desktop\\Proyecto\\Desarrollo-de-chat---UAM\\code.gif')
+#bg = ImageTk.PhotoImage(img)
 
-# Show image using label
-label1 = Label( root, image = bg)
-label1.place(x = 0, y = 0)
+root.geometry("600x600")
+
+# Add image
+#label = Label(root, image=bg)
+#label.place(x = 0,y = 0)
+
 
 root.grid_rowconfigure(0, weight=1)
 root.grid_rowconfigure(1, weight=4)
 root.grid_rowconfigure(2, weight=1)
 
-top_frame = Frame(root, width=600, height=100, bg=DARK_GREY)
+top_frame = Frame(root, width=600, height=100, bg=AZUL)
 top_frame.grid(row=0, column=0, sticky=NSEW)
 
-middle_frame = Frame(root, width=600, height=400, bg=MEDIUM_GREY)
+middle_frame = Frame(root, width=600, height=400, bg=AZUL)
 middle_frame.grid(row=1, column=0, sticky=NSEW)
 
-bottom_frame = Frame(root, width=600, height=100, bg=DARK_GREY)
+bottom_frame = Frame(root, width=600, height=100, bg=AZUL)
 bottom_frame.grid(row=2, column=0, sticky=NSEW)
 
-username_label = Label(top_frame, text="Nombre de usuario:", font=FONT, bg=DARK_GREY, fg=WHITE)
+username_label = Label(top_frame, text="Salaf401[User:]", font=FONT, bg=AZUL, fg=WHITE)
 username_label.pack(side=LEFT, padx=4)
 
-username_textbox = Entry(top_frame, font=FONT, bg=MEDIUM_GREY, fg=WHITE, width=23)
+username_textbox = Entry(top_frame, font=FONT, bg=WHITE, fg=GRAY10, width=23)
 username_textbox.pack(side=LEFT)
 
 username_button = Button(top_frame, text="Unirse", font=BUTTON_FONT, bg=AZUL, fg=WHITE, command=connect)
 username_button.pack(side=LEFT, padx=15)
 
-message_textbox = Entry(bottom_frame, font=FONT, bg=AZUL, fg=WHITE, width=38)
+message_textbox = Entry(bottom_frame, font=FONT, bg=WHITE, fg=GRAY10, width=38)
 message_textbox.pack(side=LEFT, padx=10)
 
-message_button = Button(bottom_frame, text="Enviar", font=BUTTON_FONT, bg=OCEAN_BLUE, fg=WHITE, command=send_message)
+message_button = Button(bottom_frame, text="Enviar", font=BUTTON_FONT, bg=WHITE, fg=GRAY10, command=send_message)
 message_button.pack(side=LEFT, padx=10)
 
-
-message_box =scrolledtext.ScrolledText(middle_frame,font=SMALL_FONT,bg=AZUL, fg=WHITE, width=67, height=26.5)
+message_box =scrolledtext.ScrolledText(middle_frame,font=SMALL_FONT,bg=WHITE, fg=GRAY10, width=67, height=26.5)
 message_box.config(state=DISABLED)
 message_box.pack(side=TOP)
 

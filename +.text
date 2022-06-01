@@ -16,3 +16,15 @@ root.wm_attributes("-topmost", True)
 root.wm_attributes("-disabled", True)
 root.wm_attributes("-transparentcolor", "white")
 label.pack()
+
+
+llabel = Label(root, image=bg)
+llabel.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+
+# Show image using label
+label1 = Label( root, image = bg)
+label1.place(x = 0, y = 0)
+
+

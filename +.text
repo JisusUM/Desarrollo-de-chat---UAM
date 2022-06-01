@@ -1,0 +1,18 @@
+#logo=tk.PhotoImage(file="code.gif")
+"""image= image.subsample(3,3)
+label=tk.Label(image=image)
+label.pack()"""
+
+
+#label(root,image=logo,bd=0).pack()
+#lbllogo=label(root,image=logo).place(x=0,y=0)
+
+
+
+label = tk.Label(root, image=root.image,bg='white')
+root.overrideredirect(True)
+root.lift()
+root.wm_attributes("-topmost", True)
+root.wm_attributes("-disabled", True)
+root.wm_attributes("-transparentcolor", "white")
+label.pack()

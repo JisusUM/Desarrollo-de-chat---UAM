@@ -2,6 +2,7 @@ from cProfile import label
 from email.mime import image
 import socket
 import threading
+from time import time
 import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import messagebox
@@ -62,6 +63,7 @@ def send_message():
     if message != '':
         client.sendall(message.encode())
         message_textbox.delete(0, len(message))
+        
     else:
         messagebox.showerror("mensaje vacio", "El mensaje no puede estar vacío")
 
@@ -107,15 +109,10 @@ message_button = Button(bottom_frame, text="Enviar", font=BUTTON_FONT, bg=WHITE,
 message_button.pack(side=LEFT, padx=10)
 
 message_box =scrolledtext.ScrolledText(middle_frame,font=SMALL_FONT,bg=WHITE, fg=GRAY10, width=67, height=26.5)
-t_label = tk.Label(middle_frame, fg="white", bg="#595656", text=datetime.now().strftime('%H:%M'),
-                    font="lucida 9 bold")
-t_label.pack()
+{datetime.now().strftime('%H:%M')}
 message_box.config(state=DISABLED)
 message_box.pack(side=TOP)
 
-t_label = tk.Label(middle_frame, fg="white", bg="#595656", text=datetime.now().strftime('%H:%M'),
-                    font="lucida 9 bold")
-t_label.pack()
 
 def listen_for_messages_from_server(client):
 
@@ -126,7 +123,7 @@ def listen_for_messages_from_server(client):
             username = message.split("~")[0]
             content = message.split('~')[1]
 
-            add_message(f"[{username}] {content}")
+            add_message(f"[{datetime.now().strftime('%H:%M')}|{username}] {content}")
             
         else:
             messagebox.showerror("Error", "El mensaje recibido del cliente está vacío.")

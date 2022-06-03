@@ -28,3 +28,6 @@ label1 = Label( root, image = bg)
 label1.place(x = 0, y = 0)
 
 
+t_label = tk.Label(middle_frame, fg="white", bg="#595656", text=datetime.now().strftime('%H:%M'),
+                    font="lucida 9 bold")
+t_label.pack()
